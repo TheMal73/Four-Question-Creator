@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Four Question Fluency</title>
+  <meta name="description" content="Display four GCSE Maths fluency questions on screen, one topic per quadrant.">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="bar">
+    <h1>Four Question Fluency</h1>
+    <div class="controls">
+      <div class="timer" aria-label="Countdown timer">
+        <select id="timerLen" aria-label="Timer length">
+          <option value="60">1 min</option>
+          <option value="120">2 min</option>
+          <option value="180">3 min</option>
+          <option value="300" selected>5 min</option>
+          <option value="600">10 min</option>
+        </select>
+        <button type="button" id="timerBtn" class="btn timer-btn" title="Start / pause timer">5:00</button>
+        <button type="button" id="timerReset" class="btn ghost" title="Reset timer" aria-label="Reset timer">↺</button>
+      </div>
+      <button type="button" id="btnNew" class="btn" title="New questions (N)">New questions</button>
+      <button type="button" id="btnAnswers" class="btn primary" title="Show / hide all answers (A)">Show answers</button>
+      <button type="button" id="btnTopics" class="btn" title="Choose topics (T)">Topics</button>
+      <button type="button" id="btnFull" class="btn ghost" title="Fullscreen (F)" aria-label="Fullscreen">⛶</button>
+      <button type="button" id="btnTheme" class="btn ghost" title="Light / dark" aria-label="Toggle dark mode">◐</button>
+    </div>
+  </header>
+
+  <main id="grid" class="grid" aria-live="polite"></main>
+
+  <dialog id="setup" aria-labelledby="setupTitle">
+    <form id="setupForm" method="dialog">
+      <h2 id="setupTitle">What topic should go in each quadrant?</h2>
+      <div class="setup-grid">
+        <label class="pick c1"><span><b>1</b> Top left</span><select name="t0"></select></label>
+        <label class="pick c2"><span><b>2</b> Top right</span><select name="t1"></select></label>
+        <label class="pick c3"><span><b>3</b> Bottom left</span><select name="t2"></select></label>
+        <label class="pick c4"><span><b>4</b> Bottom right</span><select name="t3"></select></label>
+      </div>
+      <div class="setup-opts">
+        <label>Questions per quadrant
+          <select name="perQ">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" name="titles" checked> Show topic names on screen</label>
+      </div>
+      <p class="hint">Shortcuts: <kbd>A</kbd> answers · <kbd>1</kbd>–<kbd>4</kbd> one answer · <kbd>N</kbd> new questions · <kbd>T</kbd> topics · <kbd>F</kbd> fullscreen</p>
+      <div class="setup-actions">
+        <button type="button" id="btnRandomAll" class="btn">Randomise all</button>
+        <button type="button" id="btnCopy" class="btn">Copy link to this set</button>
+        <button type="submit" class="btn primary">Show questions</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="js/questions.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
